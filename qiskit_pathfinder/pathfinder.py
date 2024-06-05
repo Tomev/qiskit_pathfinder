@@ -10,26 +10,12 @@
 __author__ = "Tomasz Rybotycki"
 
 
-from qiskit_ibm_provider import (
-    IBMProvider,
-)
-from qiskit.providers import (
-    BackendV1,
-)
-from dijkstar import (
-    Graph,
-    find_path,
-)
-from dijkstar.algorithm import (
-    PathInfo,
-)
-from typing import (
-    Tuple,
-    Optional,
-    Dict,
-    List,
-    Any
-)
+from typing import Any, Dict, List, Optional, Tuple
+
+from dijkstar import Graph, find_path
+from dijkstar.algorithm import PathInfo
+from qiskit.providers import BackendV1
+from qiskit_ibm_provider import IBMProvider
 
 
 class QiskitPathfinder:
@@ -64,9 +50,7 @@ class QiskitPathfinder:
 
         device: BackendV1 = self.provider.get_backend(device_name)
         self.graph: Graph = self.to_graph_array(
-            device,
-            directed=directed,
-            weighted=weighted
+            device, directed=directed, weighted=weighted
         )
 
     @staticmethod
@@ -88,7 +72,6 @@ class QiskitPathfinder:
         edges: Dict[Tuple[int, int], float] = QiskitPathfinder.get_graph_edges(backend)
 
         for edge in edges:
-
             weight: float = 1 if not weighted else edges[edge]
 
             graph.add_edge(

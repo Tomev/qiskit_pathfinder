@@ -11,13 +11,9 @@
 
 __author__ = "Tomasz Rybotycki"
 
-from qiskit_pathfinder.pathfinder import (
-    QiskitPathfinder,
-    PathInfo,
-)
-from dijkstar.algorithm import (
-    NoPathError,
-)
+from dijkstar.algorithm import NoPathError
+
+from qiskit_pathfinder.pathfinder import PathInfo, QiskitPathfinder
 
 
 def main():
@@ -59,8 +55,6 @@ def main():
         print(path_info)
     except NoPathError as e:
         print(e)
-
-
 
 
 if __name__ == "__main__":
